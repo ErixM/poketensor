@@ -27,3 +27,12 @@ public/img/foils/
 
 # backend env
 backend-poketensor/env-poketensor
+
+
+# Ignore Python cache directories
+__pycache__/
+
+# Ignore Python byte-compiled files
+*.pyc
+*.pyo
+*.pyd
