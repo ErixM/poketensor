@@ -24,3 +24,6 @@ public/img/foils/
 *.njsproj
 *.sln
 *.sw?
+
+# backend env
+backend-poketensor/env-poketensor
