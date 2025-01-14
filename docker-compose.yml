@@ -1,9 +1,23 @@
 services:
-  fastapi_app:
-    container_name: fastapi_app
+  poketensor_backend:
+    container_name: poketensor_backend
     build:
       context: ./backend-poketensor
       dockerfile: conf/docker/Dockerfile
-    
     ports:
-      - "3333:8000"
+      - "3332:8000"
+    networks:
+      - app_network
+
+  poketensor_frontend:
+    container_name: poketensor_frontend
+    build:
+      context: ./frontend-poketensor
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3333:3333"
+    networks:
+      - app_network
+
+networks:
+  app_network:
