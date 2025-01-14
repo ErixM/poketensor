@@ -6,4 +6,4 @@ services:
       dockerfile: conf/docker/Dockerfile
     
     ports:
-      - "8000:8000"
+      - "3333:8000"
