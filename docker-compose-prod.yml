@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  poketensor_backend:
+    container_name: poketensor_backend
+    image: simotrevi/poketensor-backend:latest
+    ports:
+      - "3332:8000"
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  poketensor_frontend:
+    container_name: poketensor_frontend
+    image: simotrevi/poketensor-frontend:latest
+    ports:
+      - "3333:3333"
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower:latest
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=300            # Check every 5 minutes
+      - WATCHTOWER_CLEANUP=true                 # Remove old images after updates
+      # - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=your-slack-webhook-url  # Slack notification URL
+      # - WATCHTOWER_NOTIFICATION=slack           # Use Slack for notifications
+      # Add more notification environment variables as needed
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app_network
+    restart: unless-stopped
+    command: --revive-stopped  # Additional command options if needed
+
+networks:
+  app_network:
+    driver: bridge
