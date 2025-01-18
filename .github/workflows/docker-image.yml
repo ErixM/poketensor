@@ -29,7 +29,7 @@ jobs:
         context: ./backend-poketensor
         file: ./backend-poketensor/conf/docker/Dockerfile
         push: true
-        platforms: linux/amd64
+        platform: linux/arm64/v8
         tags: simotrevi/poketensor-backend:latest
         cache-from: type=registry,ref=simotrevi/poketensor-backend:latest
         cache-to: type=inline
@@ -40,7 +40,7 @@ jobs:
         context: ./frontend-poketensor
         file: ./frontend-poketensor/docker/Dockerfile
         push: true
-        platforms: linux/amd64
+        platform: linux/arm64/v8
         tags: simotrevi/poketensor-frontend:latest
         cache-from: type=registry,ref=simotrevi/poketensor-frontend:latest
         cache-to: type=inline
